@@ -1,0 +1,23 @@
+﻿#employee_list, #add_employee, #update_employee, #delete_employee {
+    display: none;
+}
+
+#main-container {
+    background-color: #14c5ed2e;
+    
+    color: #28a745;
+}
+
+.space {
+    width: 200px;
+}
+
+#myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid;
+    margin-bottom: 12px;
+}

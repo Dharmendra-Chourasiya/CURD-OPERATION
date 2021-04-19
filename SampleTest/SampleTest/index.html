@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("mytable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+   
+
+
+</head>
+<body>
+    <div style="background-color: #2D64CD;">
+        <h5 class="text-right p-3 mb-0 text-white">Crowe Employee Management Portal</h5>
+    </div>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item px-3">
+                    <a class="nav-link text-white" href="#" id="home_nav">Home</a>
+                </li>
+                <li class="nav-item  px-3">
+                    <a class="nav-link text-white" href="#" id="employee_nav">Employee List</a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="nav-link text-white" href="#" id="add_nav">Add Employee</a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="nav-link text-white" href="#" id="update_nav">Update Employee</a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="nav-link text-white" href="#" id="delete_nav">Delete Employee</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!--Home page -->
+    <div id="home">
+        <div class="d-flex justify-content-center align-items-center" style="height:500px;">
+            <div>
+                <h1>Employee Management System</h1>
+            </div>
+
+        </div>
+    </div>
+    <!--Employee list page -->
+    <div id="employee_list">
+
+        <div class="text-center mt-4 py-3" id="main-container">
+            <h3>Manage Employees</h3>
+        </div>
+        <div class="mt-4 py-3 d-flex justify-content-center">
+
+            <div>
+                <div>
+                    <div class="form-group d-inline-block w-25">
+                       <!--<input type="text" class="form-control" id="search" />-->
+                        <input type="text" id="myInput" class="form-control"  onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+                    </div>
+                   
+                    <div class="d-inline-block ml-2">
+                       <button class="btn" onclick="plus()"><i class="fa fa-plus-circle mr-2"></i><span>New</span></button>
+                    </div>
+                </div>
+                <table class="table table-hover" id="mytable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Employee Code</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Designation</th>
+                            <th>Joining Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="emplist">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--Add Employee Page -->
+    <div id="add_employee">
+        <div class="px-4 py-3">
+            <h2>Add New Employee</h2>
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Employee Code<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="text" id="empcode" name="empcode" required size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Name<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="text" id="ename" name="ename" required size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Email<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="email" id="email" name="email" required size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Designation<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <select class="form-control" id="designation" required>
+                            <option value="" hidden selected>Select Designation</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Product Engineer">Product Engineer</option>
+                            <option value="QA">QA</option>
+                            <option value="Business Analyst">Business Analyst</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Joining_Date</h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="date" id="Join_date" required size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input type="checkbox" id="per" name="per" onchange="addressv(this,'padd1','padd2')">
+                                <h5 class="d-inline-block pl-1"> Permanent Address </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 1</h5>
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="padd1" size="40" value="">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 2</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="padd2" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-1">
+                    <span class="text-danger add" style="display:none;">Permanent Address  is required</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input type="checkbox" id="per" name="per" onchange="addressv(this,'cadd1','cadd2')">
+                                <h5 class="d-inline-block pl-1">  Communication Address </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 1</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="cadd1" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 2</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="cadd2" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-1">
+                    <span class="text-danger addc" style="display:none;">Communication Address  is required</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10 text-center">
+                    <button type="button" id="save" class="btn btn-secondary">Save</button>   <button type="button" class="ml-5 btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div id="update_employee">
+
+        <div class="px-4 py-3">
+            <h2>Edit Employee</h2>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Employee Code<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="text" id="ecode" name="ecode" size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Name<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="text" id="ename1" name="ename1" size="40" value="">
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Email<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="text" id="email1" name="email1" size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Designation<span class="text-danger font-weight-bold px-1" style="font-size:20px;">*</span></h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <select class="form-control" id="designation1">
+                            <option value="" hidden selected>Select Designation</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Product Engineer">Product Engineer</option>
+                            <option value="QA">QA</option>
+                            <option value="Business Analyst">Business Analyst</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <h5>Joining_Date</h5>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group mb-0" style="height:70px;">
+                        <input class="form-control" type="date" id="Join_date1" size="40" value="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input type="checkbox" id="per11" name="per11" onchange="addressv(this,'padd11','padd22')">
+                                <h5 class="d-inline-block pl-1"> Permanent Address </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 1</h5>
+                            </div>
+
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="padd11" size="40" value="">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 2</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="padd22" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-1">
+                    <span class="text-danger add" style="display:none;">Permanent Address  is required</span>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input type="checkbox" id="per23" name="per23" onchange="addressv(this,'cadd11','cadd22')">
+                                <h5 class="d-inline-block pl-1">  Communication Address </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 1</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="cadd11" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <h5 class="pl-3">Address Line 2</h5>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group mb-0" style="height:70px;">
+                                <input class="form-control" type="text" id="cadd22" size="40" value="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-1">
+                    <span class="text-danger addc" style="display:none;">Communication Address  is required</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-10 text-center">
+                    <button type="button" id="upd" class="btn btn-secondary" >Update</button>   <button type="button" class="ml-5 btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    <div id="delete_employee">
+        <p>delete_employee</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="index.js" asp-append-version="true"></script>
+    <script>
+        $("#upd").click(function() {
+
+            var ecode = $("#ecode").val();
+            var ename1 = $("#ename1").val();
+            var email1 = $("#email1").val();
+            var designation1 = $("#designation1").val();
+            var Join_date1 = $("#Join_date1").val();
+            if (ecode == '' || ename1 == '' || email1 == '' || designation1 == '' || Join_date1=='') {
+
+                swal({
+                    title: "Field Empty!!",
+                    text: "Please check the missing field!!",
+                    icon: "warning",
+                    button: "Ok",
+                });
+                return;
+            }
+            else {
+
+                swal({
+                    title: "Successfully Submitted!!",
+                    text: "Data Updated!!",
+                    icon: "success",
+                    button: "Ok",
+                });
+            }
+            update();
+        })
+    </script>
+    <script>
+      
+        $("#save").click(function () {
+
+            var empcode = $("#empcode").val();
+            var ename = $("#ename").val();
+            var email = $("#email").val();
+            var designation = $("#designation").val();
+            var Join_date = $("#Join_date").val();
+            if (empcode =='' || ename == '' || email == '' || designation == '' || Join_date == '') {
+
+                swal({
+                    title: "Field Empty!!",
+                    text: "Please check the missing field!!",
+                    icon: "warning",
+                    button: "Ok",
+                   
+                });
+                return;
+            }
+            else {
+
+                swal({
+                    title: "Successfully Save!!",
+                    text: "Data Save!!",
+                    icon: "success",
+                    button: "Ok",
+                    
+                });
+            }
+            saveemployee();
+          
+        })
+    </script>
+
+</body>
+</html>
